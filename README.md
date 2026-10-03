@@ -13,6 +13,20 @@ Doppelklick öffnen.
 Wo liegt das? · Flaggen · Hauptstädte · Umriss erkennen · Weltkarte zuordnen (Grenzen) ·
 Regionen-Quiz (Bundesländer, Bundesstaaten, Provinzen) · Gemischt
 
+**Lernen:** Lernmodus mit Karteikarten nach Leitner (5 Fächer) und Statistik mit
+Trefferquote, schwächsten Einträgen und Beherrschungskarte. Der Lernfortschritt bleibt im
+Browser des jeweiligen Geräts, ohne Anmeldung.
+
+## Als App auf dem Handy
+
+- **iPhone/iPad:** Link in Safari öffnen → Teilen → „Zum Home-Bildschirm“. Empfohlen: Im
+  Safari-Tab löscht Safari gespeicherte Daten nach sieben Tagen ohne Besuch, in der App nicht.
+  App und Safari-Tab haben getrennte Lernstände.
+- **Android:** Link in Chrome öffnen → Menü ⋮ → „Zum Startbildschirm hinzufügen“ bzw.
+  „App installieren“.
+
+Zum Starten braucht die App eine Internetverbindung.
+
 ## Quellen und Lizenzen
 
 | Quelle | Lizenz | Verwendet für |
