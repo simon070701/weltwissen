@@ -17,6 +17,11 @@ Regionen-Quiz (Bundesländer, Bundesstaaten, Provinzen) · Gemischt
 Trefferquote, schwächsten Einträgen und Beherrschungskarte. Der Lernfortschritt bleibt im
 Browser des jeweiligen Geräts, ohne Anmeldung.
 
+**Mehrspieler:** Hot-Seat für 2–6 Spieler an einem Gerät (gleiche Frage für alle, gemeinsames
+Aufdecken; im Grenzen-Modus Eroberung reihum). Online-Spiel mit eigenem Handy je Spieler gibt es
+derzeit nur im heimischen WLAN mit einem Spielserver am PC — auf dieser Seite zeigt „Online“
+einen Hinweis dazu.
+
 ## Als App auf dem Handy
 
 - **iPhone/iPad:** Link in Safari öffnen → Teilen → „Zum Home-Bildschirm“. Empfohlen: Im
