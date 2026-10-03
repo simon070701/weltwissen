@@ -45,4 +45,5 @@ Die in `index.html` eingebettete Länderdatenbank ist eine aus mledoze/countries
 Datenbank und steht unter der **Open Database License (ODbL) 1.0**. Der MIT-Lizenztext der
 Flaggen steht als Kommentar am Anfang von `index.html`.
 
-Software: React (MIT), d3-geo, d3-geo-projection, topojson-client (ISC), Tailwind CSS (MIT).
+Software: React (MIT), d3-geo, d3-geo-projection, topojson-client (ISC), Tailwind CSS (MIT),
+idb (ISC), Socket.IO (MIT), qrcode-generator (MIT).
