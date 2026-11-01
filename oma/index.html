@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Das Geheimnis der fünf Umschläge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f7f1e6; --paper:#fffdf8; --ink:#2a2420; --muted:#6b6058; --line:#e2d7c5;
+    --accent:#1d6b66; --accent2:#134d49; --warm:#b4532f; --gold:#c8902c;
+    --A:#2f8a4e; --T:#c2412f; --G:#c8902c; --C:#2f62b0;
+    --serif:"Lora", Georgia, serif; --sans:"Atkinson Hyperlegible", Verdana, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{font-family:var(--sans); font-size:20px; line-height:1.55; color:var(--ink); background:var(--bg); min-height:100vh}
+  .wrap{max-width:680px; margin:0 auto; padding:22px 18px 70px}
+  h1{font-family:var(--serif); font-weight:700; font-size:2.05rem; line-height:1.15; margin:.2em 0 .4em}
+  h2{font-family:var(--serif); font-weight:600; font-size:1.4rem; margin:.3em 0 .4em}
+  .eyebrow{font-size:.8rem; letter-spacing:.16em; text-transform:uppercase; color:var(--warm); font-weight:700}
+  p{margin:.5em 0 .9em}
+  .card{background:var(--paper); border:1px solid var(--line); border-radius:20px; padding:22px 18px; box-shadow:0 10px 30px rgba(80,55,20,.08); margin-top:18px}
+  .muted{color:var(--muted)}
+  button{font:inherit; font-weight:700; cursor:pointer; border-radius:14px; border:0; padding:16px 22px; min-height:58px; transition:transform .1s, background .2s}
+  button:active{transform:translateY(1px)}
+  .primary{background:var(--accent); color:#fff; width:100%; font-size:1.15rem}
+  .primary:hover{background:var(--accent2)}
+  .ghost{background:#efe6d6; color:var(--ink)}
+  .link{background:none; color:var(--accent); padding:8px 0; min-height:0; text-decoration:underline; text-underline-offset:4px; font-weight:700}
+  .choice{display:flex; align-items:center; gap:16px; width:100%; text-align:left; background:var(--paper); border:2px solid var(--line); margin-top:14px; padding:18px}
+  .choice:hover{border-color:var(--accent)}
+  .choice .num{flex:none; width:54px; height:54px; border-radius:50%; background:var(--accent); color:#fff; display:grid; place-items:center; font-family:var(--serif); font-size:1.6rem}
+  .choice .num.q{background:var(--gold)}
+  .choice small{display:block; color:var(--muted); font-weight:400}
+  .feedback{min-height:1.4em; font-weight:700; color:var(--warm); margin:12px 0 0}
+  .shake{animation:shake .45s}
+  @keyframes shake{20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+  .b{display:inline-grid; place-items:center; width:1.6em; height:1.6em; border-radius:8px; color:#fff; font-weight:700}
+  .bA{background:var(--A)} .bT{background:var(--T)} .bG{background:var(--G)} .bC{background:var(--C)}
+
+  .vault{display:grid; place-items:center; margin:6px 0 10px}
+  .vault svg{width:120px; height:120px}
+  input[type=text]{width:100%; font:inherit; font-size:1.45rem; letter-spacing:.1em; text-transform:uppercase; text-align:center; color:var(--ink); background:#fff; border:2px solid var(--line); border-radius:14px; padding:14px; outline:none; margin-bottom:12px}
+  input[type=text]:focus{border-color:var(--accent)}
+
+  /* Labor: senkrechte Leiter */
+  .ladhead{display:grid; grid-template-columns:1fr 70px 1fr; text-align:center; font-size:.78rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px}
+  .lad{display:flex; flex-direction:column; gap:6px}
+  .rung{display:grid; grid-template-columns:1fr 70px 1fr; align-items:center; justify-items:center}
+  .rung .bar{width:100%; height:4px; background:#cbbda6; border-radius:2px}
+  .rung .b, .rung button.slot{width:56px; height:52px; font-size:1.45rem; border-radius:12px}
+  .rung button.slot{padding:0; min-height:0; border:3px dashed #bfae93; background:#fff; color:var(--muted)}
+  .rung button.slot.set{border-style:solid; border-color:rgba(0,0,0,.12); color:#fff}
+  .rung.dmg .bar{background:repeating-linear-gradient(90deg,#cbbda6 0 6px,transparent 6px 11px)}
+  .reveal{margin-top:18px; padding:20px; border-radius:16px; background:#eaf3ee; border:2px solid #b8d8c4; animation:rise .6s ease both}
+  .reveal .row{display:flex; flex-wrap:wrap; gap:5px; margin:10px 0 14px}
+  .reveal .row .b{width:38px; height:42px; font-size:1.2rem}
+  @keyframes rise{from{opacity:0; transform:translateY(10px)}to{opacity:1; transform:none}}
+
+  /* Hinweise */
+  .hintenv{border-top:1px solid var(--line); padding:14px 0}
+  .hintenv:first-of-type{border-top:0}
+  .hintenv h2{display:flex; align-items:center; gap:12px; margin:0 0 6px}
+  .hintenv h2 span{display:grid; place-items:center; width:40px; height:40px; border-radius:50%; background:var(--accent); color:#fff; font-size:1.1rem; flex:none}
+  .hint{margin:10px 0; padding:12px 14px; border-left:5px solid var(--accent); background:#e8f1ef; border-radius:0 12px 12px 0}
+  .hint.sol{border-color:var(--warm); background:#fbeae3}
+  .hintenv .ghost{padding:10px 16px; min-height:46px; font-size:1rem}
+
+  .gift .big{font-family:var(--serif); font-size:clamp(2.6rem,12vw,4rem); font-weight:700; color:var(--accent2); text-align:center; line-height:1; margin:.15em 0 .1em}
+  .gift .sub{text-align:center; color:var(--muted); margin-bottom:1em}
+  .gift ul{padding-left:1.1em} .gift li{margin:.4em 0}
+  .gift .note{margin-top:18px; padding:16px 18px; border-radius:14px; border:2px dashed var(--gold); background:#fbf3e2}
+  .gift .sig{font-family:var(--serif); font-size:1.25rem; margin-top:1em}
+  nav.top{display:flex; justify-content:space-between; align-items:center}
+  .confetti{position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:5}
+  .confetti i{position:absolute; top:-20px; width:10px; height:15px; border-radius:2px; animation:fall linear forwards}
+  @keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+  @media (prefers-reduced-motion: reduce){*{animation:none !important; transition:none !important}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<div class="confetti" id="confetti"></div>
+<script>
+/* Lösungen und Belohnungen sind mit der jeweils richtigen Antwort verschlüsselt. */
+const DATA = {"lab":["zvZ8cdg39qxcehzRov1PTUMSEMeIuzR1Ue7KKhsxZaDgghX6q6Jzp2rlzzp16qr2Kw4pRnQCY3D3XMe25/8iQQpoAPVsEDQt9eKmjITmRBTMMm+XicqxAT7z13iNYBeb8PYNh3/q/KK4bPluvjkWLGfH3cBN8YjhdQ1HY0b1RU4069rIOg5JBvL3F6lRg11gCh+trxqLHYANWI7a4iudGEhSIpieFGSh9d4CD7/SvD7vJ6XRr1qbcYnQhOI0ni68iyKm3OGtAxSKZ+lKzKjGQFij1naPyXgfanePMmZ30A8jPJdJ7Stgmmq3ThL2zPpNqWOV5+Gt7m6ZrK9KGV0efB6CCL0M5mYdHwgw2K1lYG4pvb10ICCs9ze0CmW91KruCZFYOxW5kfBYh7bOJpyatwn3oA6HqiqMS6++EHrkDPAJv9QiB+vZxx8aWpdwbrXa+uD6c9SzHutxIHN5uTjg+YSI1Ie7rtVhQ5NB4jkttkc9mb0JBm1IZ5cA6D95dgfqR1ePq8v2u0+CZRAvwXYJUosZOeVPP0hNtkgP2PNdLeQGSGSnl4QIMK7GEVC8Tszvz2TTyU3YKh/mB3KV61pV5U2PQlPdGqCxBgVgBU28I+hr2cEjAIc2gsrUethYcV4Lt63ak7epuEkj2faHtN/2dEA7+wKy2dd6Tb3QHy0VK/KCf7nWttE1tXn4mzoOglWFsYR60c9X4RduYQl9mhXHumnaDd78GxGe/Dk1mO/3gISNVRceW5/xjhb4nMlJb7Pu9gwT0RBBrin/hvGrRUbK1SAz/383W6z3t1cqP6nIBPLvhszDxQNKkj91KpPOjXkxHx0rHbnWSOIwXpEfaCUp5/Aqp/RNS8ADDWXp1JZ6WXj9k75F623pZxH+m9/LljtTNcpDBRu8Vi6HwryaDRIr+BWrrJBCNw3HV4pMjwrjVQMLhYYzoMdPLzMV9hAyAhDprcLjGMaZzll4//hyFYrWoK5iLaQ0k+en2Np9DY1wqm3z6UPZvdFKl4BqrQs2mQwtdsOlPhCQ/v4ApQ086Kp2omtM7j1tEfhJz1+tozbAstIljGj+ZwgM"],"vault":["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"]};
+const LAB = [{"c":"T","p":"A","dmg":false},{"c":"G","p":"C","dmg":false},{"c":null,"p":"C","dmg":false},{"c":"A","p":"T","dmg":false},{"c":"C","p":null,"dmg":true},{"c":"A","p":null,"dmg":true},{"c":"A","p":null,"dmg":true},{"c":"T","p":null,"dmg":true},{"c":"G","p":null,"dmg":true},{"c":"C","p":null,"dmg":true},{"c":"G","p":null,"dmg":true},{"c":"A","p":null,"dmg":true},{"c":"C","p":null,"dmg":true},{"c":null,"p":"T","dmg":false},{"c":"G","p":"C","dmg":false},{"c":null,"p":"T","dmg":false},{"c":"A","p":"T","dmg":false},{"c":null,"p":"T","dmg":false}];      // Leiterausschnitt: [{c:"G"|null, p:"C"|null, dmg:bool}]
+const CYCLE=["A","T","G","C"];
+
+function hash(s){let h=2166136261>>>0;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)>>>0;}return h||1;}
+function stream(k,n){let s=hash("oma2:"+k);const o=new Uint8Array(n);for(let i=0;i<n;i++){s^=s<<13;s>>>=0;s^=s>>>17;s^=s<<5;s>>>=0;o[i]=s&255;}return o;}
+function decrypt(b64,key){
+  const bin=atob(b64), ks=stream(key,bin.length), out=new Uint8Array(bin.length);
+  for(let i=0;i<bin.length;i++) out[i]=bin.charCodeAt(i)^ks[i];
+  let t; try{t=new TextDecoder("utf-8",{fatal:true}).decode(out);}catch(e){return null;}
+  return t.startsWith("OK|")?JSON.parse(t.slice(3)):null;
+}
+function unlock(blobs,key){for(const b of blobs){const r=decrypt(b,key); if(r) return r;} return null;}
+const letters=s=>s.toUpperCase().replace(/Ä/g,"AE").replace(/Ö/g,"OE").replace(/Ü/g,"UE").replace(/ß/g,"SS").replace(/[^A-Z]/g,"");
+
+const STORE="oma-umschlaege-v2";
+let state={vault:null, lab:null, hints:{}};
+try{const s=JSON.parse(localStorage.getItem(STORE)||"null"); if(s) state=Object.assign(state,s);}catch(e){}
+const save=()=>{try{localStorage.setItem(STORE,JSON.stringify(state));}catch(e){}};
+
+const $=s=>document.querySelector(s);
+const app=$("#app");
+const base=x=>`<span class="b b${x}">${x}</span>`;
+const topNav=()=>`<nav class="top"><button class="link" onclick="go('')">← Übersicht</button></nav>`;
+function go(h){ if(location.hash.slice(1)===h) route(); else location.hash=h; window.scrollTo(0,0); }
+function shake(el){el.classList.remove("shake"); void el.offsetWidth; el.classList.add("shake");}
+
+/* ---------------- Start ---------------- */
+function home(){
+  app.innerHTML=`
+  <div class="eyebrow">Das Geheimnis der fünf Umschläge</div>
+  <h1>Liebe Oma, schön, dass du hier bist!</h1>
+  <p>Welchen Umschlag hast du gerade geöffnet?</p>
+  <button class="choice" onclick="go('tresor')"><span class="num">1</span><span>Der Tresor<small>aus Umschlag 1</small></span></button>
+  <button class="choice" onclick="go('labor')"><span class="num">3</span><span>Das Labor<small>aus Umschlag 3</small></span></button>
+  <button class="choice" onclick="go('hilfe')"><span class="num q">?</span><span>Ich komme nicht weiter<small>Hinweise – Schritt für Schritt</small></span></button>`;
+}
+
+/* ---------------- Tresor ---------------- */
+const vaultSVG=open=>`<svg viewBox="0 0 120 120" aria-hidden="true">
+  <rect x="10" y="12" width="100" height="92" rx="12" fill="#2a2420"/>
+  <rect x="18" y="20" width="84" height="76" rx="8" fill="${open?"#c8902c":"#4a3f37"}"/>
+  ${open?`<text x="60" y="70" font-size="34" text-anchor="middle">🎁</text>`:`<circle cx="60" cy="58" r="22" fill="#2a2420" stroke="#c8902c" stroke-width="4"/>
+  <g stroke="#c8902c" stroke-width="4" stroke-linecap="round"><line x1="60" y1="40" x2="60" y2="47"/><line x1="60" y1="69" x2="60" y2="76"/><line x1="42" y1="58" x2="49" y2="58"/><line x1="71" y1="58" x2="78" y2="58"/></g>
+  <circle cx="60" cy="58" r="6" fill="#c8902c"/>`}
+  <rect x="22" y="104" width="18" height="8" rx="2" fill="#2a2420"/><rect x="80" y="104" width="18" height="8" rx="2" fill="#2a2420"/></svg>`;
+
+const WRONG=["Der Tresor bleibt verschlossen.","Nichts rührt sich. Die Tür bleibt zu.","Falsch. Vielleicht fehlt dir noch ein Umschlag?","Der Tresor schweigt."];
+let wrongN=0;
+function tresor(){
+  if(state.vault){ const g=unlock(DATA.vault,state.vault); if(g) return gift(g,false); }
+  app.innerHTML=`${topNav()}
+  <div class="eyebrow">Umschlag 1</div>
+  <h1>Der Tresor</h1>
+  <div class="vault">${vaultSVG(false)}</div>
+  <p>Hinter dieser Tür liegt dein Geschenk. Das Passwort steht auf deiner Karte – in der ältesten Schrift der Welt.</p>
+  <div class="card">
+    <form id="f" autocomplete="off">
+      <input type="text" id="pw" placeholder="Passwort" aria-label="Passwort" maxlength="20" autocapitalize="characters" spellcheck="false">
+      <button class="primary">Tresor öffnen</button>
+    </form>
+    <p class="feedback" id="fb" role="status"></p>
+  </div>
+  <p class="muted" style="margin-top:18px">Du kannst jederzeit wiederkommen: einfach den Code aus Umschlag 1 noch einmal scannen.</p>`;
+  $("#f").onsubmit=e=>{
+    e.preventDefault();
+    const L=letters($("#pw").value);
+    const g=L?unlock(DATA.vault,L.toLowerCase()):null;
+    if(g){state.vault=L.toLowerCase(); save(); gift(g,true);}
+    else{shake($(".card")); $("#fb").textContent=L?WRONG[wrongN++%WRONG.length]:"Bitte gib zuerst ein Passwort ein.";}
+  };
+}
+function gift(g,fresh){
+  app.innerHTML=`${topNav()}<div class="vault">${vaultSVG(true)}</div><div class="card gift">${g.html}</div>`;
+  if(fresh){burst(180); window.scrollTo(0,0);}
+}
+
+/* ---------------- Labor ---------------- */
+let fill=LAB.map(()=>null);
+function labor(){
+  const solved=state.lab?unlock(DATA.lab,state.lab):null;
+  app.innerHTML=`${topNav()}
+  <div class="eyebrow">Umschlag 3</div>
+  <h1>Das Labor</h1>
+  <p>Ein Stück deiner Kette ist beschädigt. Hier kannst du es reparieren.</p>
+  <p>Jede Sprosse dieser Leiter verbindet zwei Bausteine, die zusammengehören. Ein paar Sprossen sind noch heil – schau sie dir genau an. <b>Tippe auf ein leeres Feld</b>, um den Baustein zu wechseln.</p>
+  <div class="card">
+    <div class="ladhead"><span>Partner</span><span></span><span>Deine Kette</span></div>
+    <div class="lad" id="lad"></div>
+    ${solved?"":`<button class="primary" id="chk" style="margin-top:18px">Prüfen</button><p class="feedback" id="fb" role="status"></p>`}
+    <div id="rev"></div>
+  </div>`;
+  if(solved){ showLab(solved,false); return; }
+  draw(false);
+  $("#chk").onclick=()=>{
+    if(LAB.some((r,i)=>(r.c===null||r.p===null)&&!fill[i])){ $("#fb").textContent="Es sind noch Felder leer."; return; }
+    const key=LAB.map((r,i)=>(r.c===null||r.p===null)?fill[i]:"").join("").toLowerCase();
+    const r=unlock(DATA.lab,key);
+    if(r){state.lab=key; save(); $("#chk").remove(); $("#fb").remove(); showLab(r,true);}
+    else{shake($(".card")); $("#fb").textContent="Die Leiter hält noch nicht. Irgendwo passt etwas nicht zusammen.";}
+  };
+}
+function draw(done){
+  $("#lad").innerHTML=LAB.map((r,i)=>{
+    const cell=(v,side)=>v!==null?base(v):(done?base(side):
+      `<button class="slot ${fill[i]?"set b"+fill[i]:""}" data-i="${i}" aria-label="Feld ${i+1}">${fill[i]||"?"}</button>`);
+    const cv=r.c!==null?r.c:null, pv=r.p!==null?r.p:null;
+    return `<div class="rung ${r.dmg?"dmg":""}">${cell(cv,r.cs)}<span class="bar"></span>${cell(pv,r.ps)}</div>`;
+  }).join("");
+  if(!done) document.querySelectorAll("#lad button.slot").forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.i; fill[i]=CYCLE[(CYCLE.indexOf(fill[i])+1)%4]; draw(false);
+  });
+}
+function showLab(r,fresh){
+  // geloeste Leiter anzeigen
+  LAB.forEach((row,i)=>{ if(row.c===null) row.cs=r.c[i]; if(row.p===null) row.ps=r.p[i]; });
+  draw(true);
+  $("#rev").innerHTML=`<div class="reveal">${r.html}</div>`;
+  if(fresh) burst(70);
+}
+
+/* ---------------- Hinweise ---------------- */
+const HINTS=[{"n":1,"title":"Der Tresor","last":true,"hints":["Die Kette kannst du erst lesen, wenn du alle anderen Umschläge geöffnet hast. Heb die Karte gut auf.","Zuerst muss die Lücke gefüllt werden (Umschlag 3). Danach brauchst du den <b>Partner</b> der ganzen Kette – nicht die Kette selbst.","Schreib zu jedem Baustein seinen Partner auf (A↔T, G↔C). Such im Partnerstrang das <b>erste ATG</b>. Lies ab dort in Dreiergruppen und übersetze jede mit der Sonne, bis ein Stopp kommt. Das ATG selbst zählt nicht mit.","Das Passwort lautet <b>DNA-TEST</b>.<br>Partnerstrang ab dem ersten ATG: ATG · GAC · AAT · GCG · ACA · GAA · AGC · ACC · TGA → Start · D · N · A · T · E · S · T · Stopp."]},{"n":2,"title":"Die Sonne","last":true,"hints":["Die Teile ergeben einen Kreis aus mehreren Ringen. Beginne mit der Mitte.","Lies von innen nach außen: ein Buchstabe aus dem innersten Ring, einer aus dem mittleren, einer aus dem äußeren. Ganz außen steht dann, wofür diese Dreiergruppe steht.","Beispiel: T (innen) – T (Mitte) – T (außen) ergibt F. Die Probezeile auf der Karte ergibt ein Wort, das dir viel bedeutet.","Die Probezeile ergibt <b>FAMILIE</b>."]},{"n":3,"title":"Das Labor","last":true,"hints":["Schau dir die heilen Sprossen genau an: Welche Bausteine stehen sich immer gegenüber?","Es gibt nur zwei Paare – und jedes gilt in beide Richtungen.","A gehört immer zu T, G immer zu C.","Rechts in die Lücke (von oben): <b>G T T A C G C T G</b>.<br>Die vier leeren Felder links (von oben): <b>G, A, A, A</b>."]},{"n":4,"title":"Die Brücken","last":true,"hints":["Jedes gesuchte Wort bildet mit dem linken Wort ein neues Wort – und mit dem rechten auch.","Erste Zeile: HAUS·ARBEIT und ARBEIT·GEBER.","Lies die Anfangsbuchstaben der gesuchten Wörter von oben nach unten.","ARBEIT · TISCH · GARTEN · INSEL · SCHUH · TOR · SEE · TEE · APFEL · RING · TASCHE → <b>ATG IST START</b>."]},{"n":5,"title":"Der letzte Umschlag","last":false,"hints":["Folge dem Gedicht Zeile für Zeile – jede Zeile ist ein Arbeitsschritt. Und die ersten drei Buchstaben kennst du aus jedem Krimi."]}];
+function hilfe(){
+  app.innerHTML=`${topNav()}
+  <div class="eyebrow">Hinweise</div>
+  <h1>Ich komme nicht weiter</h1>
+  <p>Jeder Hinweis verrät ein bisschen mehr. Nimm immer nur so viele, wie du wirklich brauchst.</p>
+  <div class="card" id="hl"></div>`;
+  renderHints();
+}
+function renderHints(){
+  $("#hl").innerHTML=HINTS.map((env,k)=>{
+    const n=state.hints[k]||0;
+    const shown=env.hints.slice(0,n).map((h,j)=>`<div class="hint ${j===env.hints.length-1&&env.last?"sol":""}">${h}</div>`).join("");
+    let btn="";
+    if(n<env.hints.length){
+      const isLast=n===env.hints.length-1&&env.last;
+      btn=`<button class="ghost" data-k="${k}" data-last="${isLast?1:0}">${isLast?"Lösung zeigen":"Hinweis "+(n+1)+" zeigen"}</button>`;
+    }
+    return `<div class="hintenv"><h2><span>${env.n}</span>${env.title}</h2>${shown}${btn}</div>`;
+  }).join("");
+  document.querySelectorAll("#hl button").forEach(b=>b.onclick=()=>{
+    const k=+b.dataset.k;
+    if(b.dataset.last==="1" && !b.dataset.armed){ b.dataset.armed="1"; b.textContent="Wirklich? Dann nochmal tippen."; return; }
+    state.hints[k]=(state.hints[k]||0)+1; save(); renderHints();
+  });
+}
+
+/* ---------------- Konfetti ---------------- */
+function burst(n){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const box=$("#confetti"), cols=["#2f8a4e","#c2412f","#c8902c","#2f62b0","#1d6b66"];
+  for(let i=0;i<n;i++){const e=document.createElement("i"); e.style.left=Math.random()*100+"vw"; e.style.background=cols[i%5];
+    e.style.animationDuration=(2+Math.random()*2.4)+"s"; e.style.animationDelay=Math.random()*.6+"s"; box.appendChild(e); setTimeout(()=>e.remove(),5500);}
+}
+function route(){
+  const h=location.hash.slice(1);
+  if(h==="tresor") tresor(); else if(h==="labor") labor(); else if(h==="hilfe") hilfe(); else home();
+}
+window.addEventListener("hashchange",()=>{route(); window.scrollTo(0,0);});
+route();
+</script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Spind 14</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#eef2f8; --paper:#ffffff; --ink:#14213d; --muted:#5d6b85; --line:#d8e0ee;
+    --navy:#16346b; --court:#2457a8; --lime:#c9de3a; --lime2:#b3c82a; --coral:#d4553f; --glass:#7fb7c9;
+    --yel:#e3c51b; --blu:#2f6fd6;
+    --head:"Outfit", system-ui, sans-serif; --sans:"Inter", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{font-family:var(--sans); font-size:18px; line-height:1.55; color:var(--ink); background:var(--bg); min-height:100vh}
+  .wrap{max-width:680px; margin:0 auto; padding:22px 18px 70px}
+  h1{font-family:var(--head); font-weight:800; font-size:2.2rem; line-height:1.1; margin:.2em 0 .4em; letter-spacing:-.01em}
+  h2{font-family:var(--head); font-weight:700; font-size:1.3rem; margin:.2em 0 .4em}
+  .eyebrow{font-family:var(--head); font-size:.8rem; letter-spacing:.18em; text-transform:uppercase; color:var(--court); font-weight:700}
+  p{margin:.5em 0 .9em}
+  .card{background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:20px 18px; box-shadow:0 10px 30px rgba(20,33,61,.07); margin-top:16px}
+  .muted{color:var(--muted)}
+  button{font:inherit; font-weight:700; cursor:pointer; border-radius:12px; border:0; padding:15px 20px; min-height:54px; transition:transform .1s, background .2s}
+  button:active{transform:translateY(1px)}
+  .primary{background:var(--navy); color:#fff; width:100%; font-size:1.08rem; font-family:var(--head); letter-spacing:.02em}
+  .primary:hover{background:var(--court)}
+  .ghost{background:#e6ecf6; color:var(--ink)}
+  .link{background:none; color:var(--court); padding:8px 0; min-height:0; text-decoration:underline; text-underline-offset:4px}
+  .choice{display:flex; align-items:center; gap:16px; width:100%; text-align:left; background:var(--paper); border:2px solid var(--line); margin-top:12px; padding:16px}
+  .choice:hover{border-color:var(--court)}
+  .choice .num{flex:none; width:50px; height:50px; border-radius:50%; background:var(--navy); color:#fff; display:grid; place-items:center; font-family:var(--head); font-size:1.5rem; font-weight:800}
+  .choice .num.q{background:var(--lime); color:var(--ink)}
+  .choice small{display:block; color:var(--muted); font-weight:500}
+  .feedback{min-height:1.4em; font-weight:700; color:var(--coral); margin:12px 0 0}
+  .shake{animation:shake .45s}
+  @keyframes shake{20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+  input[type=text]{width:100%; font:inherit; font-family:var(--head); font-size:1.4rem; letter-spacing:.12em; text-transform:uppercase; text-align:center; color:var(--ink); background:#fff; border:2px solid var(--line); border-radius:12px; padding:13px; outline:none; margin-bottom:12px}
+  input[type=text]:focus{border-color:var(--court)}
+  .locker{display:grid; place-items:center; margin:4px 0 8px}
+  .locker svg{width:130px; height:170px}
+
+  /* Anzeigetafel */
+  .task{border:1px solid var(--line); border-radius:14px; padding:14px; margin-top:14px; background:#f8fafd}
+  .task h2{display:flex; justify-content:space-between; align-items:center; font-size:1.05rem}
+  .serve{font-size:.85rem; font-weight:700; padding:3px 10px; border-radius:20px}
+  .serve.G{background:#fbf1b4; color:#6b5a00} .serve.B{background:#d9e6fb; color:#163d84}
+  .balls{display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 12px}
+  .ball{width:34px; height:34px; border-radius:50%; display:grid; place-items:center; font-weight:800; font-size:.85rem; color:#fff; font-family:var(--head); position:relative}
+  .ball.G{background:var(--yel); color:#4a3d00} .ball.B{background:var(--blu)}
+  .ball::after{content:""; position:absolute; inset:5px; border-radius:50%; border:1.5px solid rgba(255,255,255,.55); border-left-color:transparent; border-right-color:transparent}
+  .call{display:flex; align-items:center; gap:10px; font-family:var(--head)}
+  .call label{font-size:.75rem; color:var(--muted); display:block; text-transform:uppercase; letter-spacing:.08em; font-weight:700}
+  .call select{font:inherit; font-family:var(--head); font-size:1.25rem; font-weight:700; padding:10px 8px; border-radius:10px; border:2px solid var(--line); background:#fff; color:var(--ink); min-width:120px}
+  .call .colon{font-size:1.6rem; font-weight:800; padding-top:18px}
+  .task.ok{border-color:#9cc56a; background:#f2f8e8}
+  .reveal{margin-top:18px; padding:18px; border-radius:16px; background:#f3f8dc; border:2px solid #d4e48a; animation:rise .6s ease both}
+  .reveal svg{width:100%; height:auto; display:block; margin:8px 0 12px}
+  @keyframes rise{from{opacity:0; transform:translateY(10px)}to{opacity:1; transform:none}}
+
+  .hintenv{border-top:1px solid var(--line); padding:14px 0}
+  .hintenv:first-of-type{border-top:0}
+  .hintenv h2{display:flex; align-items:center; gap:12px; margin:0 0 6px}
+  .hintenv h2 span{display:grid; place-items:center; width:38px; height:38px; border-radius:50%; background:var(--navy); color:#fff; font-size:1.05rem; flex:none}
+  .hint{margin:10px 0; padding:12px 14px; border-left:5px solid var(--court); background:#e9f0fb; border-radius:0 12px 12px 0}
+  .hint.sol{border-color:var(--coral); background:#fbe9e5}
+  .hintenv .ghost{padding:10px 16px; min-height:44px; font-size:.95rem}
+
+  .gift .big{font-family:var(--head); font-size:clamp(1.8rem,8.2vw,3.2rem); font-weight:800; color:var(--navy); text-align:center; line-height:1; margin:.15em 0 .15em; letter-spacing:.02em}
+  .gift .sub{text-align:center; color:var(--muted); margin-bottom:1em}
+  .gift .plus{margin:14px 0; padding:16px 18px; border-radius:14px; background:var(--lime); color:var(--ink); font-family:var(--head); font-size:1.15rem; font-weight:700; text-align:center}
+  .gift ul{padding-left:1.1em} .gift li{margin:.35em 0}
+  .gift .sig{font-family:var(--head); font-size:1.2rem; margin-top:1em; font-weight:600}
+  nav.top{display:flex; justify-content:space-between; align-items:center}
+  .confetti{position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:5}
+  .confetti i{position:absolute; top:-20px; width:12px; height:12px; border-radius:50%; animation:fall linear forwards}
+  @keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+  @media (prefers-reduced-motion: reduce){*{animation:none !important; transition:none !important}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<div class="confetti" id="confetti"></div>
+<script>
+/* Lösungen und Belohnungen sind mit der jeweils richtigen Antwort verschlüsselt. */
+const DATA={"tafel":["iNk015dRQz47cnXOxSGvxiz5cKXK2zlQFVZlMTkq2L+7n8n252BlgRtX11tVS5QjEGGwoycprZEg7Ndf+5bUCnX2CDWiFXh13+4+tIxBYXVcQYVsUgCn2q0Ho0ExDiUpcKvs8dbuJ+IUyN0VcXJ2iltmNW0SMDYsyiOF8ZGt7+ZKSxsH6/xk2V0R9Jp8uf3yem/5D1u134ISN+M17cClXkIgTvlwPbdrVQ7qFwbVu7pzdcmY+gcMp/OO/X50tUOhdqTumvzfvUHBTAnnx6R40ugkjmY/Yd2CMJuUCSR2Gg6/sTqoOV1rr9ZseFvCIxZ33R2GEkzCx0GdT5WX3iFp8/FlVT4Cp45E/tyua4TgkaED/xBNvzeluBYBA87KpTH/xVrUATKcCQIcYfIDpZJaNUM2jvYoB6YGqaeFXu7QZu36bqgioHVXbLCSvwdMzaChiYZnGo1Ms/458afGGq7b3T226p1SNF12wIPjzEPuHz42MZc23kYNFg/WGrh6VdShulBRUVH5ms5n3ZsJit7QfN7rU9z0LyHahVSrx1Kbj9i2yDfeXnqIkhsUaBQOZrD46pJTYnWMnYxjqNXsevizD3gasK538d+jX0WNucB4jyDNvdepg9LFxCm3xcGB3Jbi81/qDOLGIiWb5IFO8z8LbRQZquOWlyo6Oxfu8Tyc6i0R4bepkGvzijFYtBZC84yS+oiTWeUQw9R3j6Ug8D1PeBtfWFfUTmPmzfZ/+SPOA3c0TIjBpBnuXAuYvJaVIPrlf4mIcTJEOZhFaQzENrqI7m60Fi4aiI3Y6oWGlaFkknpBy26kM/bsijCxkRfjVaYIPRnKc2VRDXc9+NlqKosJxApeLEPOck2RZgNPJPfgyxzL3v3501b9HcEcXZRhKSBD7GjQFiqzNxN/kQaYLAoK12gLtNgQRHpy1ngOtRGai6WQ06GMl1iLVV/bUfbEgny7BH8MsN1RaQM84fOgBQxyMWMfan4k6IEJyE/QJeqqg880/8TGln6c4QIeShdhXBMkzVw2MFwNxF3+nQqDt3oFF8kcnsEV+0iQA/e/4UKDfyF5H0+l8pPC535D7x0bS9lZ71PpIVGxfI6RIqXLWWMBClfwnrJV3Xxceqs2ivG3yu7Ask3chC//wiWiM0JGu2+MUGQ95K87hWpCAdpdqnBTS0F6xUN+Ega00RwHkfmxpldrFKCb8waW4wKlSrySTtR6Q4vpxninvRS5k6eE7SjDBfzbWRyM7tki2IwyxmLyazFSAgRA7aLjP6Rka+ZXMPN9tWGhnpnh/vmpYLRqKgZKzltDcmuD5y7LjW1/UTjKfdedusrh410JmsBEZCr8fgzVzSFjtDvNcJkB/8j2lK0rNidbQFmoauX4im9ZPM376X2XZUDJrxRXpDoajQMPgVxxU3emhhKQsEqU3OzUsrsd8Hl+lonfi6/6GB8dsTHZ7Fm/2xl3gSOoDb7Tj6s10avZYw4gxo5/ChG887FBg6CW+MDXevN0vELFfoA98jKNdPsRrmhqim5RjfqBu1gcp5HCqi1hNAP2NOeo6N7/sx/rsEU6VknMtaDhxxRb6N2PSc11QiXCj6eSNd+iE7PSd584izpk55agOx/GxEYjt7te/hl9aC2zkDi59GvgJ32KvXqT6Srs0vqMMXaBzrKfXTuG6oCIJPD8qqYrxa3wV6ywyGcXn5f7iNBfwEWvdnzqR4uDzx1cLRBlbz4N4GeuEz9o0pl7LeYah0JUssFVxVOEJ/ywAj73RFjey5jPkbmtOQAvTydZ3lgvfCOH2gpeHcC1tnryzUN6dzWg1xngp++8EZqtNfpndVKB1nvO0T0QH+/8V+xNYFiQgk+G1uT2P6f396/6dtLAoZaSuKWp0RweK5EYedHJOx2VXCJO9C4TAXjDR/UOPYmRtM/xcomIBTg25rG8B7Dj8HfxnpQuuW/jR8AQUWzH5vUKNGaWcVxPzJxYXiqXZ9LMKCu7VkONvUm6P+nfUSfTEhmrnglCKz4/sAvgIee3xxIlKRjZqIyS4S8h1XYfPBHJIVrazxMbgmvrIMXNU+dHuHQRaD4uvuPAZll+jaFmBZW9Pm5zj9uyieE1GzYcfwwlQEs6DHRNvcVw6kEHBrFc5B0PlU4oKbqv3QOlzmSlOx9aH2brxF56I5pmi2VRxdSk0HOTEjXIZhagLXe673HFiRLp8AVQFUcBPFDG3n/5rTqFMy2LgnJjb2pd9nballBsjPfCtKPYSUsHmbgqI0lkVW9o1FDlGLWsvBNgWUa0CIsW2UW1FKn3VPrFUcs06RsMu4hZWqsfJrNob+Zz4x/39SThGIR8hkQn79kZp3/EJf1EJc5yLXpx05YJggafGlDz9b+qoRe9JFM5rdOZuyibHYmfYm6zuyzjABuEdD0Okj8QiqqZ5gXrhAx0rtfl7AYXEPP7zDzqAoMZIeXc4XEiAOk6WxvZdm05ltFdx3O9uuatp0wolLv18KggbpyxiJ1d+91J4WUAdpwwYVvve9Q7KsJDTsgiwg4mIcUPHlsWiKDt7QcXCvdvu+jA7ba7MvoKYLcdDClH0e7RDieyuT5uqDsSvnRpLHukmc7BJK/yxEi2ZKNHLqX2qQ54k55zM6FzEhJfZmxY6KB3NhR8XkpcKNbGaRSQxnhE64iKISb8a9RjBBtKsVceLzTJvHcDmcxGaXhec1sXfc8numqJtTpv5m2cgz6T09d3+y7d2IJnW+gtD5EpfZaQ0djMRn9c/XVCIiATTUklyjTo5TufVJErYy1A1ftITRBDsCYsTSIflSVGT6itWYtSduFbsAIgNGFVXZ4ZOWRu0YzNoRzRe2FB4LQGtYjMnzUNJci6QJOD7YPHezdUVpJCZcKq+s/rjJ+qzm+H2Vm1mEIEIdPRcYr2Oav1e4gEYNgkKp1d/qWP5OqGGQ3E/EifaPJrwwX/BmTq2nupfCzjN0Y0pYJVPKNDQa36jWa4eHMVUDtbO86/cNLWUiIf7y7X6MZ4vWI4L/6LuoqV+LScbeS6kj7JBvSpFqophmwLdRwm4sU7dVfQQbZjFQcRle8Q+Bt4wTGPXoez55PEL/TXlTY5Ov1WO7GT2H4Fq1buxPmAu5CEbqhk2iXfhP5Yhmhz+gO4rGQU5Zc4Z9wRPatNaDu+X+xGMk3oCMUl0WENRepe7G/7rO4HfiMa3o+nkzfwSn+OpR5K94q5eL+ltN8EoagodwUqjSYqeHKPf8i8kUj7jpWShUrhQAr8lwbtFBelGluQ9i26Q2ULvwc/IX5uA9Q0u7oEGI0pubuweQTlvbXYQhH6iU+IsRVh3wULs2FTxR6/k4sE73Y62zsD/NXGCu3WDl/XM4l4S3qZYO6ZhelOmvcI20ITnFODudFP1dKIhf//+xuZFn2eiHxZhoDBts89foQOlky06uOIKwwhevMt5ng2aKzUXfadmqbhEhZ8qvlXdu+pJmbCMrP1zqjAQrv6bA/R5pNkTPLOUh7Ru+OQUsW5UdfGffuMU/CBJ91xfUF6y80CJDeAgXzyAiXVWzMPkeeH8EbMHyOTKf94JpducWxgshEU6/P1sIxAxpdZZ2aXiP9Pcuq+0kz03t2Kx8Las8FM/v9onRv2cNm+AdPngGEkoGamDaCxLrIc3hOzmEFraM3MmnBKSc4qt95Ks3dqTFRiS4lGxoR/cB88BfLq4aPQQAeQexJ8PL5JZ4VrTp7ZNu1hj7xWw18NPhhX1mJEeAR3JFYx5EJPllYhf0/DjO81WIEC778nY7+XYP7xmo9T2BaxH+z0J01O9GZOJR8LWuxTY8WA3BwI0wtCdDtQXHL4d5N9DQDH32AUxG4d+JQZc6hAU0kaDebvmMSRqbLMxFAE+8G25iDbYLE6vrN6sFn0PUViy2qtJVbNIQB/UJ/S4RLp6acBjhLSHWgwc7tX3AIgc+jD7jbljKHHqc28h61xZGHqgxDQmJ5WU4kIRSOA6WxXsJd5LfWmnJxkM21Ug2jQJV299fDBNh2vqMKKChF5cH228GsTNQ6pHMxTvfrS9M7iLLCR+Cbd6tehjmE5GagRNh/am4CK8pr7mMKYauHaTCOOxV/nWQu5P2X986AFZddUIyVliSDkn+1zbBwObP6gKgODiuCn8/8BK0h6vlihG5zqavgnzrx0kYnpf+tO1FDswARebqVbXyE+W0NbeDOSanBqtVlkr2rE8oBCkPLeBpxaH1I8FVyx+31C1oKL0ZvtpSUjD4Y0lUa4V1H9sMBBNF6882RaeUYTUxx4X7sAWt6EIyzr38EJIfVCCs5QJUP9BQr4dpH9fGGH/YlNIXaqzqhIF6u7N0U27v9Elg/jQPf5yP6ypDvMbeyif/vLB/nA3A2IwqAAzYgZMy4t85HEQBoYOO2v/RrQm1mU2C5jqUcJHNFYUH4hV2y1fst3BDBCXcsFB0w4K3ZFDY41bKcXfkzuIt3XKwgTt4TUcaodq2nT2H3sMbx1x9u1aBv6ApPOnRjxrdDH25RS01QRkGugxhWFqhdyj0Aw56gomRu89dNtbfYbglGyjFBcTAKxUUgRMqmrG2gY0Ppnc+KqsnxE1tP6duSMDIFqZpjlx1imc/IW0/mhXcQodVQNaw7bVt+HTWsJOIrJXgipyHddfIeWFq4L+sa4DZS0PtlspPrTtzK5wGLd4sVQeDbSh0N6fF9DUcnqC5BldmNjT6b0MBYgswIzLrei98M/nQB5CEgby5uMl/R6eqrHVI8uRKelrONr1eH5eK5Qvx+G2F/vkvUXuTv9jR3Uiw6fSMzs1QfAhORclvGwA7n5zaAq9B3tD9fHlmXh2qgv4fIibXCIEka7ZgGYpDPONURZv9CxcYThHuwtnjXufGyx2oGhlw=="],"spind":["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"]};
+const TASKS=[{"srv":"G","seq":"GBGG","h":3418451968},{"srv":"B","seq":"GGBGB","h":3278858804},{"srv":"G","seq":"BGBGGBB","h":3708684098},{"srv":"B","seq":"BBBGGGGB","h":2536185603}];   // [{srv:"G"|"B", seq:"GBGG", h:hash}]
+const HINTS=[{"n":1,"title":"Spind 14","last":true,"hints":["Heb das Protokoll gut auf – lösen kannst du es erst mit den anderen Umschlägen.","Jeder der 14 Spielstände steht für genau einen Buchstaben.","Bau ein 5 × 5-Feld wie im Beispiel aus Umschlag 4, aber mit dem Wort aus Umschlag 2. Die erste Zahl eines Spielstands nennt die Zeile (Aufschläger), die zweite die Spalte (Rückschläger). Einstand heißt 40 : 40.","Das Code-Wort lautet <b>PADELSCHLÄGER</b>.<br>Feld: V I B O R · A C D E F · G H K L M · N P Q S T · U W X Y Z"]},{"n":2,"title":"Die Rangliste","last":true,"hints":["Leg dir eine Tabelle an: Platz 1 bis 6, darunter Name, Lieblingsschlag und Schlägerfarbe.","Starte mit den festen Punkten: Wo landet die Bajada? Wer steht direkt vor wem? Und was folgt daraus für die Farben?","Platz 1 belegt Vera, Platz 6 Anton.","1 Vera · Remate · Schwarz<br>2 Ingo · Globo · Weiß<br>3 Bernd · Bandeja · Rot<br>4 Olga · Volley · Gelb<br>5 Rita · Chiquita · Blau<br>6 Anton · Bajada · Grün<br>Die Anfangsbuchstaben ergeben <b>VIBORA</b>."]},{"n":3,"title":"Die Anzeigetafel","last":true,"hints":["Gezählt wird 0 – 15 – 30 – 40. Wer bei 40 den nächsten Punkt macht, gewinnt das Spiel – außer es steht 40 : 40.","Bei 40 : 40 heißt es Einstand. Wer danach punktet, hat Vorteil. Verliert er den nächsten Punkt, ist wieder Einstand.","Zähl für jedes Spiel erst die Punkte beider Teams. Dann nennst du den Stand des aufschlagenden Teams zuerst.","Spiel 1: 40 : 15 · Spiel 2: 30 : 40 · Spiel 3: 40 : Vorteil · Spiel 4: 40 : 40"]},{"n":4,"title":"Das Beispiel","last":true,"hints":["Vergleiche das Beispielfeld mit dem gewohnten Alphabet.","Zuerst steht das Beispielwort – jeder Buchstabe nur einmal. Danach folgt der Rest des Alphabets der Reihe nach.","Ein Buchstabe fehlt im Feld ganz: das J. Jetzt bau dasselbe mit deinem Wort aus Umschlag 2.","Mit VIBORA: V I B O R · A C D E F · G H K L M · N P Q S T · U W X Y Z"]},{"n":5,"title":"Der letzte Ballwechsel","last":false,"hints":["Hier gibt es nichts mehr zu entschlüsseln – nur noch anzuwenden. Und ein Tipp: Das Wort beginnt mit PADEL."]}];
+const OPTS=["0","15","30","40","Vorteil"];
+const TEAM={G:"Gelb",B:"Blau"};
+
+function hash(s){let h=2166136261>>>0;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)>>>0;}return h||1;}
+function stream(k,n){let s=hash("mama:"+k);const o=new Uint8Array(n);for(let i=0;i<n;i++){s^=s<<13;s>>>=0;s^=s>>>17;s^=s<<5;s>>>=0;o[i]=s&255;}return o;}
+function decrypt(b64,key){
+  const bin=atob(b64), ks=stream(key,bin.length), out=new Uint8Array(bin.length);
+  for(let i=0;i<bin.length;i++) out[i]=bin.charCodeAt(i)^ks[i];
+  let t; try{t=new TextDecoder("utf-8",{fatal:true}).decode(out);}catch(e){return null;}
+  return t.startsWith("OK|")?JSON.parse(t.slice(3)):null;
+}
+function unlock(blobs,key){for(const b of blobs){const r=decrypt(b,key); if(r) return r;} return null;}
+const letters=s=>s.toUpperCase().replace(/Ä/g,"AE").replace(/Ö/g,"OE").replace(/Ü/g,"UE").replace(/ß/g,"SS").replace(/[^A-Z]/g,"");
+
+const STORE="mama-padel-v1";
+let state={spind:null, tafel:null, hints:{}};
+try{const s=JSON.parse(localStorage.getItem(STORE)||"null"); if(s) state=Object.assign(state,s);}catch(e){}
+const save=()=>{try{localStorage.setItem(STORE,JSON.stringify(state));}catch(e){}};
+const $=s=>document.querySelector(s);
+const app=$("#app");
+const topNav=()=>`<nav class="top"><button class="link" onclick="go('')">← Übersicht</button></nav>`;
+function go(h){ if(location.hash.slice(1)===h) route(); else location.hash=h; window.scrollTo(0,0); }
+function shake(el){el.classList.remove("shake"); void el.offsetWidth; el.classList.add("shake");}
+
+function home(){
+  app.innerHTML=`
+  <div class="eyebrow">Fünf Umschläge · ein Spind</div>
+  <h1>Liebe Mama, willkommen im Club!</h1>
+  <p>Welchen Umschlag hast du gerade geöffnet?</p>
+  <button class="choice" onclick="go('spind')"><span class="num">1</span><span>Spind 14<small>aus Umschlag 1</small></span></button>
+  <button class="choice" onclick="go('tafel')"><span class="num">3</span><span>Die Anzeigetafel<small>aus Umschlag 3</small></span></button>
+  <button class="choice" onclick="go('hilfe')"><span class="num q">?</span><span>Ich komme nicht weiter<small>Hinweise – Schritt für Schritt</small></span></button>`;
+}
+
+/* ---------------- Spind ---------------- */
+const lockerSVG=open=>`<svg viewBox="0 0 130 170" aria-hidden="true">
+  <rect x="8" y="6" width="114" height="158" rx="8" fill="#16346b"/>
+  ${open?`<rect x="16" y="14" width="98" height="142" rx="4" fill="#0d1f40"/>
+    <g transform="translate(65 86) rotate(-18)"><ellipse cx="0" cy="-22" rx="24" ry="30" fill="#c9de3a" stroke="#14213d" stroke-width="3"/>
+    ${[[-10,-36],[0,-38],[10,-36],[-14,-24],[-4,-25],[6,-25],[14,-22],[-12,-12],[-2,-12],[8,-12],[-6,-1],[4,-1]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="2.6" fill="#14213d"/>`).join("")}
+    <rect x="-5" y="6" width="10" height="34" rx="4" fill="#14213d"/></g>`:
+  `<rect x="16" y="14" width="98" height="142" rx="4" fill="#2457a8"/>
+    ${[0,1,2,3,4].map(i=>`<rect x="34" y="${26+i*8}" width="62" height="3.5" rx="1.7" fill="#16346b"/>`).join("")}
+    <circle cx="65" cy="98" r="15" fill="#16346b" stroke="#c9de3a" stroke-width="3"/>
+    <rect x="61" y="90" width="8" height="12" rx="2" fill="#c9de3a"/>
+    <text x="65" y="140" text-anchor="middle" font-family="Outfit" font-weight="800" font-size="20" fill="#c9de3a">14</text>`}
+</svg>`;
+const WRONG=["Der Spind bleibt zu.","Klick. Nichts passiert.","Falscher Code – vielleicht fehlt dir noch ein Umschlag?","Das Schloss rührt sich nicht."];
+let wrongN=0;
+function spind(){
+  if(state.spind){ const g=unlock(DATA.spind,state.spind); if(g) return gift(g,false); }
+  app.innerHTML=`${topNav()}
+  <div class="eyebrow">Umschlag 1</div>
+  <h1>Spind 14</h1>
+  <div class="locker">${lockerSVG(false)}</div>
+  <p>In diesem Spind wartet etwas auf dich. Sein Schloss öffnet sich mit einem Wort – und das Wort steckt im Protokoll der Schiedsrichterin.</p>
+  <div class="card">
+    <form id="f" autocomplete="off">
+      <input type="text" id="pw" placeholder="Code-Wort" aria-label="Code-Wort" maxlength="24" autocapitalize="characters" spellcheck="false">
+      <button class="primary">Spind öffnen</button>
+    </form>
+    <p class="feedback" id="fb" role="status"></p>
+  </div>
+  <p class="muted" style="margin-top:16px">Du kannst jederzeit wiederkommen: einfach den Code aus Umschlag 1 noch einmal scannen.</p>`;
+  $("#f").onsubmit=e=>{
+    e.preventDefault();
+    const L=letters($("#pw").value);
+    const g=L?unlock(DATA.spind,L.toLowerCase()):null;
+    if(g){state.spind=L.toLowerCase(); save(); gift(g,true);}
+    else{shake($(".card")); $("#fb").textContent=L?WRONG[wrongN++%WRONG.length]:"Bitte gib zuerst ein Code-Wort ein.";}
+  };
+}
+function gift(g,fresh){
+  app.innerHTML=`${topNav()}<div class="locker">${lockerSVG(true)}</div><div class="card gift">${g.html}</div>`;
+  if(fresh){burst(170); window.scrollTo(0,0);}
+}
+
+/* ---------------- Anzeigetafel ---------------- */
+let picks=TASKS.map(()=>["",""]);
+function tafel(){
+  const solved=state.tafel?unlock(DATA.tafel,state.tafel):null;
+  if(solved) picks=state.tafel.split("|").map(x=>x.split("-").map(v=>v==="v"?"Vorteil":v));
+  app.innerHTML=`${topNav()}
+  <div class="eyebrow">Umschlag 3</div>
+  <h1>Die Anzeigetafel</h1>
+  <p>Bevor du spielst, musst du zählen können. Hier wird <b>mit Vorteil</b> gespielt – ohne Golden Point. Die Ansage macht immer das aufschlagende Team, und zwar mit dem <b>eigenen Stand zuerst</b>.</p>
+  <p>Jede Kugel ist ein Punkt für das Team in dieser Farbe. Wie lautet die Ansage nach dem letzten Punkt?</p>
+  <div id="tasks"></div>
+  ${solved?"":`<button class="primary" id="chk" style="margin-top:18px">Ansagen prüfen</button><p class="feedback" id="fb" role="status"></p>`}
+  <div id="rev"></div>`;
+  $("#tasks").innerHTML=TASKS.map((t,i)=>`
+    <div class="task ${solved?"ok":""}" id="t${i}">
+      <h2>Spiel ${i+1}<span class="serve ${t.srv}">Aufschlag: ${TEAM[t.srv]}</span></h2>
+      <div class="balls">${[...t.seq].map(x=>`<span class="ball ${x}" title="Punkt ${TEAM[x]}">${x}</span>`).join("")}</div>
+      <div class="call">
+        <div><label>${TEAM[t.srv]} (Aufschlag)</label><select data-i="${i}" data-s="0" ${solved?"disabled":""}><option value="">–</option>${OPTS.map(o=>`<option ${picks[i][0]===o?"selected":""}>${o}</option>`).join("")}</select></div>
+        <span class="colon">:</span>
+        <div><label>${TEAM[t.srv==="G"?"B":"G"]} (Rückschlag)</label><select data-i="${i}" data-s="1" ${solved?"disabled":""}><option value="">–</option>${OPTS.map(o=>`<option ${picks[i][1]===o?"selected":""}>${o}</option>`).join("")}</select></div>
+      </div>
+    </div>`).join("");
+  if(solved){ showTafel(solved,false); return; }
+  document.querySelectorAll("#tasks select").forEach(s=>s.onchange=()=>{picks[+s.dataset.i][+s.dataset.s]=s.value;});
+  $("#chk").onclick=()=>{
+    if(picks.some(p=>!p[0]||!p[1])){ $("#fb").textContent="Es fehlen noch Ansagen."; return; }
+    const parts=picks.map(p=>p.map(v=>v==="Vorteil"?"v":v).join("-"));
+    const r=unlock(DATA.tafel,parts.join("|"));
+    if(r){state.tafel=parts.join("|"); save(); $("#chk").remove(); $("#fb").remove();
+      document.querySelectorAll("#tasks select").forEach(s=>s.disabled=true);
+      document.querySelectorAll(".task").forEach(t=>t.classList.add("ok")); showTafel(r,true);}
+    else{
+      const n=parts.filter((x,i)=>hash("tafel"+i+":"+x)===TASKS[i].h).length;
+      shake($("#tasks")); $("#fb").textContent=`${n} von ${TASKS.length} Ansagen stimmen.`;
+    }
+  };
+}
+function showTafel(r,fresh){ $("#rev").innerHTML=`<div class="reveal">${r.html}</div>`; if(fresh) burst(60); }
+
+/* ---------------- Hinweise ---------------- */
+function hilfe(){
+  app.innerHTML=`${topNav()}
+  <div class="eyebrow">Hinweise</div>
+  <h1>Ich komme nicht weiter</h1>
+  <p>Jeder Hinweis verrät ein bisschen mehr. Nimm nur so viele, wie du wirklich brauchst.</p>
+  <div class="card" id="hl"></div>`;
+  renderHints();
+}
+function renderHints(){
+  $("#hl").innerHTML=HINTS.map((env,k)=>{
+    const n=state.hints[k]||0;
+    const shown=env.hints.slice(0,n).map((h,j)=>`<div class="hint ${j===env.hints.length-1&&env.last?"sol":""}">${h}</div>`).join("");
+    let btn="";
+    if(n<env.hints.length){
+      const isLast=n===env.hints.length-1&&env.last;
+      btn=`<button class="ghost" data-k="${k}" data-last="${isLast?1:0}">${isLast?"Lösung zeigen":"Hinweis "+(n+1)+" zeigen"}</button>`;
+    }
+    return `<div class="hintenv"><h2><span>${env.n}</span>${env.title}</h2>${shown}${btn}</div>`;
+  }).join("");
+  document.querySelectorAll("#hl button").forEach(b=>b.onclick=()=>{
+    const k=+b.dataset.k;
+    if(b.dataset.last==="1" && !b.dataset.armed){ b.dataset.armed="1"; b.textContent="Wirklich? Dann nochmal tippen."; return; }
+    state.hints[k]=(state.hints[k]||0)+1; save(); renderHints();
+  });
+}
+
+function burst(n){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const box=$("#confetti"), cols=["#c9de3a","#e3c51b","#2457a8","#16346b","#7fb7c9"];
+  for(let i=0;i<n;i++){const e=document.createElement("i"); e.style.left=Math.random()*100+"vw"; e.style.background=cols[i%5];
+    e.style.animationDuration=(2+Math.random()*2.4)+"s"; e.style.animationDelay=Math.random()*.6+"s"; box.appendChild(e); setTimeout(()=>e.remove(),5500);}
+}
+function route(){
+  const h=location.hash.slice(1);
+  if(h==="spind") spind(); else if(h==="tafel") tafel(); else if(h==="hilfe") hilfe(); else home();
+}
+window.addEventListener("hashchange",()=>{route(); window.scrollTo(0,0);});
+route();
+</script>
+</body>
+</html>
